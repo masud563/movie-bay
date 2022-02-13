@@ -6,15 +6,15 @@ class RegisterForm extends Form {
   
   state = {
     data:{
-      username:{},
-      password:{},
-      name:{}
+      username:'',
+      password:'',
+      name:''
     },
     errors:{}
   }
 
   schema ={
-    username: Joi.string().required(),
+    username: Joi.string().email().required(),
     password: Joi.string().min(5).required(),
     name: Joi.string().required()
   }
@@ -26,7 +26,7 @@ class RegisterForm extends Form {
 
   render() {
     return (
-      <div className='w-4/5 mx-auto pt-8'>
+      <React.Fragment>
         <div>
           <h1 className='text-4xl font-semibold mb-6'>Register</h1>
         </div>
@@ -36,7 +36,7 @@ class RegisterForm extends Form {
           {this.renderInput('name','Name')}
           {this.renderButton('Register')}
         </form>
-      </div>    
+      </React.Fragment>    
     );
   }
 }

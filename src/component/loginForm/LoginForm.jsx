@@ -24,7 +24,7 @@ class LoginForm extends Form {
   render() {
     
     return (
-      <div className='w-4/5 mx-auto pt-8'>
+      <React.Fragment>
         <div>
           <h1 className='text-4xl font-semibold mb-6'>Login</h1>
         </div>
@@ -33,7 +33,7 @@ class LoginForm extends Form {
           {this.renderInput('password','Password', 'password')}
           {this.renderButton('Submit')}
         </form>
-      </div>
+      </React.Fragment>
     );
   }
 }

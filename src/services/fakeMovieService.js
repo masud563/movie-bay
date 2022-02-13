@@ -102,9 +102,50 @@ const movies = [
   },
 ];
 
+const genres = [
+      {
+        _id: '',
+        name: 'All Genres'
+      },
+      {
+        _id: 10,
+        name: 'Action'
+      },
+      {
+        _id: 11,
+        name: 'Thriller'
+      },
+      {
+        _id: 12,
+        name: 'Comedy'
+      },
+    ]
+
 export function getMovies() {
   return movies;
 }
+
+export function getGenres(){
+  return genres;
+}
+
 export function getMovie(id){
   return movies.find(movie => movie._id ===id);
 }
+
+export function addMovie(title,genreName,numberInStock, rentalRate){
+  const ids = movies.map(movie=>movie._id);
+  const selectedGenre = genres.filter(genre=>genre.name===genreName)
+  const newMovie={
+    _id: Math.max(...ids)+1,
+    title: title,
+    genre: {...selectedGenre[0]},
+    numberInStock: numberInStock,
+    dailyRentalRate: rentalRate,
+    isFav: false
+  }
+  console.log(newMovie);
+  movies.push(newMovie);
+}
+
+

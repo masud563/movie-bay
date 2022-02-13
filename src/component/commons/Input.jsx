@@ -3,7 +3,7 @@ import React from "react";
 const Input = ({type, name, label, value, error, onChange }) => {
   return (
     <div>
-      <label htmlFor={name} className='inline-block mb-2 mt-4'>
+      <label htmlFor={name} className='block mb-2 mt-4'>
         {label}
       </label>
       <input

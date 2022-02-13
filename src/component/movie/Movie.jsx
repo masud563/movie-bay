@@ -1,31 +1,15 @@
 import React, {Component} from 'react';
-import {getMovies, getMovie} from '../../services/fakeMovieService';
+import {getMovies, getMovie, getGenres} from '../../services/fakeMovieService';
 import MovieRow from './movieRow/MovieRow';
 import Pagination from '../commons/pagination/Pagination';
 import paginate from '../../utils/paginate';
 import ListGroup from '../commons/pagination/ListGroup';
+import {Link} from 'react-router-dom';
 
 class Movie extends Component {
   state = {
     movies: getMovies(),
-    genres: [
-      {
-        _id: '',
-        name: 'All Genres'
-      },
-      {
-        _id: 10,
-        name: 'Action'
-      },
-      {
-        _id: 11,
-        name: 'Thriller'
-      },
-      {
-        _id: 12,
-        name: 'Comedy'
-      },
-    ],
+    genres: getGenres(),
     selectedGenre: null,
     perPageLimit: 4,
     currentPage: 1
@@ -75,7 +59,10 @@ class Movie extends Component {
     if(this.state.movies.length){
       return(
         <div className="m-10 ">
-          <p>Showing {totalGenreLength} movies in the database.</p>
+          <div>
+            <Link to='/movie/new'><button className='btn btn-primary'>Add New Movie</button></Link>           
+          </div>
+          <p className='mt-6'>Showing {totalGenreLength} movies in the database.</p>
           <table className='border-collapse text-left text-xl my-4 w-full'>
             <thead>
               <tr className='border-y-2'>
