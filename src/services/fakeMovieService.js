@@ -148,4 +148,9 @@ export function addMovie(title,genreName,numberInStock, rentalRate){
   movies.push(newMovie);
 }
 
+export function editMovie(movie){
+  const index = movie._id -1;
+  movies[index] = movie;
+}
+
 

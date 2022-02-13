@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "../commons/Form";
 import Joi from "joi-browser";
-import { getMovie, getGenres } from "../../services/fakeMovieService";
+import { getMovie, getGenres, editMovie } from "../../services/fakeMovieService";
 
 class EditMovieForm extends Form {
   state = {
@@ -16,13 +16,11 @@ class EditMovieForm extends Form {
     dailyRentalRate: Joi.number().min(0).max(10).required(),
   };
 
-  // componentDidMount(){
-  //  const data= getMovie(Number(this.props.match.params.id));
-  //  this.setState({data});
-  // }
+  
 
   doSubmit = () => {
     //Call the server
+    editMovie(this.state.data);
     this.props.history.push('/movie')
   };
 
